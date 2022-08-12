@@ -32,7 +32,7 @@ addBook("Spreadsheets for Fun and Profit","Dr. X.L. Sheetz, M.D.","9946",true);
 
 //Printing the contents of the library array
 library.forEach(
-    element => {
+    function (element) {
         console.log(element.info());
     }
 );
