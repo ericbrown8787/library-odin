@@ -1,0 +1,1 @@
+console.log("If you can see this in the console, then your past self has successfully linked your JS file.")
