@@ -1,3 +1,16 @@
-p > strong{
-    text-transform: uppercase;
+#book-display {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+#book-display section {
+  border: 1px solid black;
+  padding: 1rem;
+  max-width: 300px;
+}
+
+.info-type {
+  font-weight: bold;
 }
