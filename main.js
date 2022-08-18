@@ -50,15 +50,25 @@ function addBook(title, author, pages, read) {
 function updateDisplayedBooks(){
 let displayedBooks = "";
 library.forEach(function (book) {
-  displayedBooks += `<section class="displayedBook" data-index-number =${book.indexNumber}>${book.displayTitle()} ${book.displayAuthor()} ${book.displayPages()} ${book.displayIfRead()}</section>`;
+  displayedBooks += `<section class="displayedBook" data-index-number=${book.indexNumber}>${book.displayTitle()} ${book.displayAuthor()} ${book.displayPages()} ${book.displayIfRead()}</section>`;
 });
 bookContainer.innerHTML = displayedBooks;
 }
 
-
 function addNewBook() {
     addBook("Why Is The Cat Screaming?", "Some Guy", "62", false);
     updateDisplayedBooks();
+}
+
+function removeBook(indexNo){
+    library.forEach(function(book){
+      if (book.indexNumber === indexNo){
+        const domElement = document.querySelector(`[data-index-number="${book.indexNumber}"]`);
+        library.splice(library.indexOf(book),1);
+        console.log(library)
+        domElement.remove();
+      }
+    });
 }
 
 document.getElementById("addBook").addEventListener("click", () => {addNewBook()});
