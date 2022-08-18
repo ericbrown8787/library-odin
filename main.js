@@ -37,26 +37,35 @@ function book(title, author, pages, read) {
 //
 let library = [];
 const bookContainer = document.getElementById("book-display");
-let displayedBooks = "";
 
 //Creates new books using book constructor and adds them to the library array
 function addBook(title, author, pages, read) {
   library.push(new book(title, author, pages, read));
 }
 
-//Adding some dummy books
-addBook("A Brief History of Tax Evasion", "Al Capone", "8", true);
-addBook("Why Is The Cat Screaming?", "Some Guy", "62", false);
-addBook("Extreme Knitting For Beginners", "GRANDMA.", "685", false);
-addBook(
-  "Spreadsheets for Fun and Profit",
-  "Dr. X.L. Sheetz, M.D.",
-  "9946",
-  true
-);
-
-//Printing the contents of the library array
+function updateDisplayedBooks(){
+let displayedBooks = "";
 library.forEach(function (book) {
   displayedBooks += `<section class="displayedBook">${book.displayTitle()} ${book.displayAuthor()} ${book.displayPages()} ${book.displayIfRead()}</section>`;
 });
 bookContainer.innerHTML = displayedBooks;
+}
+
+
+function addNewBook() {
+    addBook("Why Is The Cat Screaming?", "Some Guy", "62", false);
+    updateDisplayedBooks();
+}
+
+document.getElementById("addBook").addEventListener("click", () => {addNewBook()});
+
+// addBook("A Brief History of Tax Evasion", "Al Capone", "8", true);
+// addBook("Why Is The Cat Screaming?", "Some Guy", "62", false);
+// addBook("Extreme Knitting For Beginners", "GRANDMA.", "685", false);
+// addBook(
+//   "Spreadsheets for Fun and Profit",
+//   "Dr. X.L. Sheetz, M.D.",
+//   "9946",
+//   true
+// );
+updateDisplayedBooks();
