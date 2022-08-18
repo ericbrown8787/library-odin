@@ -1,9 +1,10 @@
 //Constructor
-function book(title, author, pages, read) {
+function book(title, author, pages, read,indexNumber) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.indexNumber = indexNumber; 
   this.displayTitle = function () {
     return `<h2 class="title">${title}</h2>`;
   };
@@ -37,16 +38,19 @@ function book(title, author, pages, read) {
 //
 let library = [];
 const bookContainer = document.getElementById("book-display");
+let indexNumCount = 0
 
 //Creates new books using book constructor and adds them to the library array
 function addBook(title, author, pages, read) {
-  library.push(new book(title, author, pages, read));
+  let indexNumber = indexNumCount;
+  indexNumCount++
+  library.push(new book(title, author, pages, read,indexNumber));
 }
 
 function updateDisplayedBooks(){
 let displayedBooks = "";
 library.forEach(function (book) {
-  displayedBooks += `<section class="displayedBook">${book.displayTitle()} ${book.displayAuthor()} ${book.displayPages()} ${book.displayIfRead()}</section>`;
+  displayedBooks += `<section class="displayedBook" data-index-number =${book.indexNumber}>${book.displayTitle()} ${book.displayAuthor()} ${book.displayPages()} ${book.displayIfRead()}</section>`;
 });
 bookContainer.innerHTML = displayedBooks;
 }
