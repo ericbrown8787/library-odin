@@ -9,20 +9,31 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-    <form>
+    <article>
+      <h1 class="page-title">My Library</h1>
+      <div id="book-display"></div>
+    </article>
+    <form class="add-book-form">
+      
       <legend>Add A Book!</legend>
-      <label for="titleInput">Title</label>
-      <input type="text" id="titleInput" name="titleInput" />
-      <label for="authorInput">Author</label>
-      <input type="text" id="authorInput" name="authorInput" />
-      <label for="pagesInput">Pages</label>
-      <input type="number" id="pagesInput" name="pagesInput" />
-
-      <label for="readInput">Read?</label>
-      <input type="checkbox" id="readInput" name="readInput" />
+      <div class="input-field">      <label for="titleInput">Title</label>
+        <input type="text" id="titleInput" name="titleInput" />
+  </div>
+      
+      <div class="input-field">      <label for="authorInput">Author</label>
+        <input type="text" id="authorInput" name="authorInput" />
+  </div>
+      
+      <div class="input-field">    <label for="pagesInput">Pages</label>
+        <input type="number" id="pagesInput" name="pagesInput" />
+  </div>
+  
+  <div class="input-field">      <label for="readInput">Read?</label>
+    <input type="checkbox" id="readInput" name="readInput" />
+</div>
 
       <button type="button" id="addBook" name="addBook">Add Book</button>
     </form>
-    <article id="book-display"></article>
+
   </body>
 </html>

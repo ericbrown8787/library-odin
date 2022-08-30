@@ -1,3 +1,46 @@
+*, *::before, *::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family:'Courier New', Courier, monospace;
+  background: aliceblue;
+}
+
+.page-title{
+  font-size: 2rem;
+text-align:center;
+}
+
+.info-type {
+  font-weight: bold;
+}
+
+.add-book-form{
+  display: grid;
+  gap: 1rem;
+  max-width: 300px;
+  margin-inline: auto;
+}
+
+.add-book-form > legend{
+  text-align: center;
+}
+
+.input-field{
+  display:grid;
+  text-align: center;
+}
+
+.input-field > *{
+  display: block;
+}
+
+form > input{
+  display: block;
+}
+
 #book-display {
   display: flex;
   flex-wrap: wrap;
@@ -5,12 +48,26 @@
   gap: 1rem;
 }
 
-#book-display section {
-  border: 1px solid black;
+
+.book-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px;
   padding: 1rem;
   max-width: 300px;
 }
 
-.info-type {
+.book-card button{
+  display: block;
+  background: salmon;
+  padding: .4rem;
   font-weight: bold;
+  border: none;
+  margin-inline: auto;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px;
+}
+
+.title{
+  padding-block-end: 1rem;
 }

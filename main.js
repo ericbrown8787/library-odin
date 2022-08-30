@@ -16,7 +16,7 @@ function Book(title, author, pages, read, indexNumber) {
     const infoTypeSpan = document.createElement('span');
     const infoValueSpan = document.createElement('span');
     infoTypeSpan.setAttribute("class","info-type");
-    infoTypeSpan.innerText = `${infoType}:`;
+    infoTypeSpan.innerText = `${infoType}: `;
     infoValueSpan.setAttribute("class","info-value");
     infoValueSpan.innerText = infoValue;
     element.appendChild(infoTypeSpan);
@@ -81,7 +81,7 @@ function generateCard(book){
     removeBook(book.indexNumber);
   })
   removeButton.innerText = "Remove Book";
-  card.setAttribute("class","displayedBook");
+  card.setAttribute("class","book-card");
   card.setAttribute("data-index-number",book.indexNumber);
   card.appendChild(book.displayTitle());
   card.appendChild(book.displayAuthor());
@@ -142,6 +142,6 @@ document.getElementById("addBook").addEventListener("click", () => {
   displayNewCard();
   clearInputs();
 });
-
+addBook("Spreadsheets For Fun And Profit","Dr. X.L. Sheetz",343,true)
 //On page loading
 populateDisplayedBooks();
