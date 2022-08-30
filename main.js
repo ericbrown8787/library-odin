@@ -4,20 +4,43 @@ const bookContainer = document.getElementById("book-display");
 let indexNumCount = 0;
 
 //Constructors
-function book(title, author, pages, read, indexNumber) {
+function Book(title, author, pages, read, indexNumber) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
   this.indexNumber = indexNumber;
   this.displayTitle = function () {
-    return `<h2 class="title">${title}</h2>`;
+    const titleElement = document.createElement('h2');
+    titleElement.setAttribute("class","title");
+    titleElement.innerText = this.title;
+    return titleElement;
   };
   this.displayAuthor = function () {
-    return `<p class="author"><span class="info-type">Author:</span><span class="info-value"> ${author}</span></p>`;
+    const element = document.createElement('p');
+    const infoTypeSpan = document.createElement('span');
+    const infoValueSpan = document.createElement('span');
+    infoTypeSpan.setAttribute("class","info-type");
+    infoTypeSpan.innerText = 'Author:'
+    infoValueSpan.setAttribute("class","info-value");
+    infoValueSpan.innerText = author;
+    element.setAttribute("class","author");
+    element.appendChild(infoTypeSpan);
+    element.appendChild(infoValueSpan);
+    return element;
   };
   this.displayPages = function () {
-    return `<p class="pages"><span class="info-type">Pages:</span><span class="info-value"> ${pages}</span></p>`;
+    const element = document.createElement('p');
+    const infoTypeSpan = document.createElement('span');
+    const infoValueSpan = document.createElement('span');
+    infoTypeSpan.setAttribute("class","info-type");
+    infoTypeSpan.innerText = 'Pages:'
+    infoValueSpan.setAttribute("class","info-value");
+    infoValueSpan.innerText = pages;
+    element.setAttribute("class","author");
+    element.appendChild(infoTypeSpan);
+    element.appendChild(infoValueSpan);
+    return element;
   };
   this.displayIfRead = function () {
     let readStatus;
@@ -26,7 +49,17 @@ function book(title, author, pages, read, indexNumber) {
     } else {
       readStatus = "No";
     }
-    return `<p class="read"><span class="info-type">Read:</span><span class="info-value"> ${readStatus}</span></p>`;
+    const element = document.createElement('p');
+    const infoTypeSpan = document.createElement('span');
+    const infoValueSpan = document.createElement('span');
+    infoTypeSpan.setAttribute("class","info-type");
+    infoTypeSpan.innerText = 'Read?:'
+    infoValueSpan.setAttribute("class","info-value");
+    infoValueSpan.innerText = readStatus;
+    element.setAttribute("class","author");
+    element.appendChild(infoTypeSpan);
+    element.appendChild(infoValueSpan);
+    return element;
   };
 
   this.info = function () {
@@ -44,26 +77,30 @@ function book(title, author, pages, read, indexNumber) {
 function addBook(title, author, pages, read) {
   let indexNumber = indexNumCount;
   indexNumCount++;
-  library.push(new book(title, author, pages, read, indexNumber));
+  library.push(new Book(title, author, pages, read, indexNumber));
 }
 
 function updateDisplayedBooks() {
-  let displayedBooks = "";
+  let displayedBooks = new DocumentFragment();
   library.forEach(function (book) {
-    displayedBooks += `<section class="displayedBook" data-index-number=${
-      book.indexNumber
-    }>${book.displayTitle()} ${book.displayAuthor()} ${book.displayPages()} ${book.displayIfRead()}</section>`;
+    const card = document.createElement('section');
+    card.setAttribute("class","displayedBook");
+    card.setAttribute('data-index-number',book.indexNumber);
+    card.appendChild(book.displayTitle());
+    card.appendChild(book.displayAuthor());
+    card.appendChild(book.displayPages());
+    card.appendChild(book.displayIfRead());
+    displayedBooks.append(card);
   });
-  bookContainer.innerHTML = displayedBooks;
+  bookContainer.appendChild(displayedBooks);
 }
 
-function addNewBook() {
+function inputBook(){
   const title = document.getElementById("titleInput").value;
   const author = document.getElementById("authorInput").value;
   const pages = document.getElementById("pagesInput").value;
   const read = document.getElementById("readInput").checked;
   addBook(title, author, pages, read);
-  updateDisplayedBooks();
 }
 
 function clearInputs() {
@@ -90,9 +127,12 @@ function removeBook(indexNo) {
   });
 }
 
+//Event Listeners
 document.getElementById("addBook").addEventListener("click", () => {
-  addNewBook();
+  inputBook();
+  updateDisplayedBooks();
   clearInputs();
 });
 
+//On page loading
 updateDisplayedBooks();
