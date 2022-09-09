@@ -1,76 +1,76 @@
-*, *::before, *::after{
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
-  font-family:'Courier New', Courier, monospace;
+body {
+  font-family: "Courier New", Courier, monospace;
   background: aliceblue;
-.page-header{
-  .page-title{
-    text-align: center;
+  .page-header {
+    .page-title {
+      text-align: center;
+    }
   }
-}
-  .library-display{
-
+  .library-display {
   }
-  .add-book-form{
+  .add-book-form {
     display: grid;
     gap: 1rem;
     max-width: 300px;
     margin-inline: auto;
-    
-    legend{
+
+    legend {
       text-align: center;
     }
-    .input-field{
-      display:grid;
+    .input-field {
+      display: grid;
       text-align: center;
-      
     }
-  } 
-  
-  .add-book-form{
-    .input-field{
+  }
+
+  .add-book-form {
+    .input-field {
       display: block;
-      label{
+      label {
         display: block;
       }
-      input{
+      input {
         display: block;
         width: 100%;
       }
     }
-  } 
-  
+  }
+
   #book-display {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 1rem;
     gap: 1rem;
-  
+
     .book-card {
       background: white;
       border-radius: 3px;
       box-shadow: 3px 3px 3px;
       padding: 1rem;
-      max-width: 300px; 
-      p{
+      max-width: 300px;
+      p {
         .info-type {
           font-weight: bold;
         }
       }
-      
-      .title{
+
+      .title {
         padding-block-end: 1rem;
       }
-     
+
       button {
         display: block;
         background: salmon;
-        padding: .4rem;
+        padding: 0.4rem;
         font-weight: bold;
         border: none;
         margin-inline: auto;
@@ -81,18 +81,13 @@ body{
   }
 }
 
-
-
-
-
-button{
+button {
   display: block;
   background: salmon;
-  padding: .4rem;
+  padding: 0.4rem;
   font-weight: bold;
   border: none;
   margin-inline: auto;
   border-radius: 10px;
   box-shadow: 2px 2px 2px;
 }
-

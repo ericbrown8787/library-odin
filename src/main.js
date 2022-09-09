@@ -11,13 +11,13 @@ function Book(title, author, pages, read, indexNumber) {
   this.read = read;
   this.indexNumber = indexNumber;
 
-  function displayInfo(infoType, infoValue){
-    const element = document.createElement('p');
-    const infoTypeSpan = document.createElement('span');
-    const infoValueSpan = document.createElement('span');
-    infoTypeSpan.setAttribute("class","info-type");
+  function displayInfo(infoType, infoValue) {
+    const element = document.createElement("p");
+    const infoTypeSpan = document.createElement("span");
+    const infoValueSpan = document.createElement("span");
+    infoTypeSpan.setAttribute("class", "info-type");
     infoTypeSpan.innerText = `${infoType}: `;
-    infoValueSpan.setAttribute("class","info-value");
+    infoValueSpan.setAttribute("class", "info-value");
     infoValueSpan.innerText = infoValue;
     element.appendChild(infoTypeSpan);
     element.appendChild(infoValueSpan);
@@ -25,24 +25,24 @@ function Book(title, author, pages, read, indexNumber) {
   }
 
   this.displayTitle = function () {
-    const titleElement = document.createElement('h2');
-    titleElement.setAttribute("class","title");
+    const titleElement = document.createElement("h2");
+    titleElement.setAttribute("class", "title");
     titleElement.innerText = this.title;
     return titleElement;
   };
-  
+
   this.displayAuthor = function () {
-    const element=displayInfo('Author',author)
-    element.setAttribute("class","author");
+    const element = displayInfo("Author", author);
+    element.setAttribute("class", "author");
     return element;
   };
-  
+
   this.displayPages = function () {
-    const element=displayInfo('Pages',pages)
-    element.setAttribute("class","pages");
+    const element = displayInfo("Pages", pages);
+    element.setAttribute("class", "pages");
     return element;
   };
-  
+
   this.displayIfRead = function () {
     let readStatus;
     if (read === true) {
@@ -50,8 +50,8 @@ function Book(title, author, pages, read, indexNumber) {
     } else {
       readStatus = "No";
     }
-    const element=displayInfo('Read?',readStatus)
-    element.setAttribute("class","read-status");
+    const element = displayInfo("Read?", readStatus);
+    element.setAttribute("class", "read-status");
     return element;
   };
 
@@ -73,16 +73,16 @@ function addBook(title, author, pages, read) {
   library.push(new Book(title, author, pages, read, indexNumber));
 }
 
-function generateCard(book){
-  const card = document.createElement('section');
-  const removeButton = document.createElement('button');
-  removeButton.setAttribute('class','remove-button');
-  removeButton.addEventListener('click',() => {
+function generateCard(book) {
+  const card = document.createElement("section");
+  const removeButton = document.createElement("button");
+  removeButton.setAttribute("class", "remove-button");
+  removeButton.addEventListener("click", () => {
     removeBook(book.indexNumber);
-  })
+  });
   removeButton.innerText = "Remove Book";
-  card.setAttribute("class","book-card");
-  card.setAttribute("data-index-number",book.indexNumber);
+  card.setAttribute("class", "book-card");
+  card.setAttribute("data-index-number", book.indexNumber);
   card.appendChild(book.displayTitle());
   card.appendChild(book.displayAuthor());
   card.appendChild(book.displayPages());
@@ -100,7 +100,7 @@ function populateDisplayedBooks() {
   bookContainer.appendChild(displayedBooks);
 }
 
-function inputBook(){
+function inputBook() {
   const title = document.getElementById("titleInput").value;
   const author = document.getElementById("authorInput").value;
   const pages = document.getElementById("pagesInput").value;
@@ -108,7 +108,7 @@ function inputBook(){
   addBook(title, author, pages, read);
 }
 
-function displayNewCard(){
+function displayNewCard() {
   const card = generateCard(library[library.length - 1]);
   bookContainer.append(card);
 }
@@ -142,6 +142,6 @@ document.getElementById("addBook").addEventListener("click", () => {
   displayNewCard();
   clearInputs();
 });
-addBook("Spreadsheets For Fun And Profit","Dr. X.L. Sheetz",343,true)
+addBook("Spreadsheets For Fun And Profit", "Dr. X.L. Sheetz", 343, true);
 //On page loading
 populateDisplayedBooks();
