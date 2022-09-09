@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ericbrown8787/library-odin/issues"
   },
-  "homepage": "https://github.com/ericbrown8787/library-odin#readme"
+  "homepage": "https://github.com/ericbrown8787/library-odin#readme",
+  "devDependencies": {
+    "parcel": "^2.7.0"
+  }
 }
